@@ -1,0 +1,22 @@
+{
+  "defaultAssembly": "Schedule.Infrastructure",
+  "modules": [
+    {
+      "type": "ScheduleApi.Module, ScheduleApi",
+
+      "properties": {
+      }
+    },
+    {
+      "type": "Schedule.Infrastructure.ApplicationModule",
+      "properties": {
+      }
+    },
+    {
+      "type": "Schedule.Infrastructure.Data.Module",
+      "properties": {
+        "ConnectionString": "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=ScheduleApi;Data Source=NW01P021"
+      }
+    }
+  ]
+}
