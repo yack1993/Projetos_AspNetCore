@@ -9,7 +9,7 @@ namespace Schedule.Application.Dto
         public int Id { get; set; }
         public int IdUser { get; set; }
         public string Name { get; set; }
-        public DateTime DateLendig { get; set; }
+        public DateTime DateLending { get; set; }
         public bool Returned { get; set; }
 
         public LendingDto() { }
@@ -18,7 +18,7 @@ namespace Schedule.Application.Dto
             Id = lending.Id;
             IdUser = lending.IdUser;
             Name = lending.Name;
-            DateLendig = lending.DateLendig;
+            DateLending = lending.DateLending;
             Returned = lending.Returned;
         }
 

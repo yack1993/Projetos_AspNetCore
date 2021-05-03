@@ -15,10 +15,7 @@
     {
       "type": "Schedule.Infrastructure.Data.Module",
       "properties": {
-        "ConnectionString": "Persist Security Info=False;User ID=page;Password=bdpageprod2020!@;Initial Catalog=Page;Server=172.31.1.110;Persist Security Info=False;User ID=page;Password=bdpageprod2020!@;Initial Catalog=Page;Server=172.31.1.110;MultipleActiveResultSets=True",
-        "accessKeyId": "AKIA4EE5STJHFNUWLC64",
-        "secretKey": "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",
-        "temporaryFilesPath": "C:/Temp/"
+        "ConnectionString": "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=ScheduleApi;Data Source=NW01P021"
       }
     }
   ]

@@ -8,8 +8,8 @@ namespace Schedule.Application.Repositories
 {
     public interface ILendingRepository
     {
-        List<LendingDto> Get(int id);
-        List<LendingDto> All();
-        Task<int> AddLending(LendingDto lending);
+        LendingDto Get(int id);
+        //List<LendingDto> All();
+        //Task<int> AddLending(LendingDto lending);
     }
 }
