@@ -37,5 +37,24 @@ namespace Schedule.Infrastructure.Data.Repositories
                 throw;
             }
         }
+
+        public List<LendingDto> GetLendingReturned()
+        {
+            try
+            {
+                using (IDbConnection db = new SqlConnection(connectionString))
+                {
+                    string sql = @"select * from tblEmprestimo where returned = 1";
+
+                    var result = db.Query<LendingDto>(sql, new { }).ToList();
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

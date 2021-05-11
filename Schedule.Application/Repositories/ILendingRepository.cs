@@ -9,6 +9,7 @@ namespace Schedule.Application.Repositories
     public interface ILendingRepository
     {
         LendingDto Get(int id);
+        List<LendingDto> GetLendingReturned();
         //List<LendingDto> All();
         //Task<int> AddLending(LendingDto lending);
     }
