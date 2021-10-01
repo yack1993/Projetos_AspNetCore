@@ -15,8 +15,13 @@
     {
       "type": "Schedule.Infrastructure.Data.Module",
       "properties": {
-        "ConnectionString": "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=ScheduleApi;Data Source=NW01P021"
+        "ConnectionString": "User ID=postgres;password=#;Server=localhost;port=5432;Database=#;Integrated Security=true;Pooling=true;",
+        "BooksCollectionName": "#",
+        "ConnectionStringMongo": "mongodb://localhost:27017",
+        "DatabaseName": "#"
       }
     }
   ]
 }
+
+

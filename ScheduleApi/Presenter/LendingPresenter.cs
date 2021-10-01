@@ -29,5 +29,18 @@ namespace ScheduleApi.Presenter
             ContentResult.StatusCode = (int)(HttpStatusCode.OK);
             ContentResult.Content = JsonSerializer.SerializeObject(dto);
         }
+
+        public void Populate(Result<List<LendingDto>> dto)
+        {
+            if (dto == null)
+            {
+                ContentResult.StatusCode = (int)(HttpStatusCode.BadRequest);
+                ContentResult.Content = JsonSerializer.SerializeObject(dto);
+                return;
+            }
+
+            ContentResult.StatusCode = (int)(HttpStatusCode.OK);
+            ContentResult.Content = JsonSerializer.SerializeObject(dto);
+        }
     }
 }

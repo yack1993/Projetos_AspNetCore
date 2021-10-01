@@ -13,6 +13,8 @@ using ScheduleApi.Presenter;
 using Schedule.Application.UseCases.Schedule.AddSchedule;
 using Schedule.Application.UseCases.Schedule.UpdateSchedule;
 using Schedule.Application.UseCases.Schedule.DeleteSchedule;
+using Schedule.Application.UseCases.Schedule.GetSchedule;
+using Schedule.Application.UseCases.Schedule.GetScheduleDetails;
 
 namespace ScheduleApi.Controllers
 {
@@ -25,18 +27,42 @@ namespace ScheduleApi.Controllers
         private readonly IUpdateScheduleUseCase _updateScheduleUseCase;
         private readonly IDeleteScheduleUseCase _deleteScheduleUseCase;
         private readonly SchedulePresenter _schedulePresenter;
+        private readonly IGetSheduleUseCse _getSheduleUseCse;
+        private readonly IGetScheduleDetailsUseCase _getScheduleDetailsUseCase;
+
 
         public ScheduleController(IListScheduleUseCase listScheduleUseCase,
             IAddScheduleUseCase addScheduleUseCase,
             IUpdateScheduleUseCase updateScheduleUseCase,
             IDeleteScheduleUseCase deleteScheduleUseCase,
-            SchedulePresenter schedulePresenter)
+            SchedulePresenter schedulePresenter,
+            IGetSheduleUseCse getSheduleUseCse,
+            IGetScheduleDetailsUseCase getScheduleDetailsUseCase)
         {
             _listScheduleUseCase = listScheduleUseCase;
             _addScheduleUseCase = addScheduleUseCase;
             _updateScheduleUseCase = updateScheduleUseCase;
             _deleteScheduleUseCase = deleteScheduleUseCase;
             _schedulePresenter = schedulePresenter;
+            _getSheduleUseCse = getSheduleUseCse;
+            _getScheduleDetailsUseCase = getScheduleDetailsUseCase;
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get(int id)
+        {
+            Result<ScheduleDto> output = await _getScheduleDetailsUseCase.Execute(id);
+            return Ok(output);
+        }
+
+
+        [HttpGet("All")]
+        //[Route("AllEmployeeDetails")]
+        public async Task<IActionResult> All()
+        {
+            Result<List<ScheduleDto>> output = await _getSheduleUseCse.Execute();
+            return Ok(output);
         }
 
         /// <summary>

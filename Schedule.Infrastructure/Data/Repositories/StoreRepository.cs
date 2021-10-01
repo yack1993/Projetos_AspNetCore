@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using System.Linq;
+using Npgsql;
 
 namespace Schedule.Infrastructure.Data.Repositories
 {
@@ -23,7 +24,7 @@ namespace Schedule.Infrastructure.Data.Repositories
         {
             try
             {
-                using (IDbConnection db = new SqlConnection(connectionString))
+                using (IDbConnection db = new NpgsqlConnection(connectionString))
                 {
                     string sql = @"select * from Schedule";
                     var result = db.Query<Schedules>(sql).ToList();

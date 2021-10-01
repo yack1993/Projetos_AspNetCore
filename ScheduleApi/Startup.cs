@@ -10,20 +10,24 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.OpenApi.Models;
-
+using Schedule.Application.Dto;
 using Schedule.Application.Repositories;
 using Schedule.Application.UseCases.GetStore;
+using Schedule.Infrastructure.Data.Repositories;
 
 namespace ScheduleApi
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,8 +38,22 @@ namespace ScheduleApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+          
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                   .AllowAnyMethod()
+                   .AllowAnyHeader()
+                   .SetIsOriginAllowed((host) => true)
+                   .AllowCredentials());
+            });
+
+            services.AddControllers();
             services.AddAutoMapper();
-            services.AddCors();
+            //services.AddCors();
+            //services.AddDbContext<>(options => options.UseNpgsql(Configuration.GetConnectionString("ConnectionString")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddControllersWithViews();
 
@@ -85,6 +103,7 @@ namespace ScheduleApi
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseRouting();
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapDefaultControllerRoute();
@@ -92,18 +111,18 @@ namespace ScheduleApi
             });
 
             //check access security domain(cors)
-            app.UseCors(
+            /*app.UseCors(
                    options => options.AllowAnyOrigin()
                   .AllowAnyMethod()
                   .AllowAnyHeader()
-                  );
+                  );*/
 
             // Ativando middlewares para uso do Swagger
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json",
-                    "Schedule API");
+                    "Projetos API");
             });
         }
     }

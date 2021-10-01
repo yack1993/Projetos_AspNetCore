@@ -10,9 +10,9 @@ namespace Schedule.Infrastructure.Data
     {
         //public string endPoint { get; set; }
         public string ConnectionString { get; set; }
-       // public string accessKeyId { get; set; }
-        //public string secretKey { get; set; }
-        //public string bucket { get; set; }
+        public string BooksCollectionName { get; set; }
+        public string ConnectionStringMongo { get; set; }
+        public string DatabaseName { get; set; }
         //public string bucketProduct { get; set; }
         //public string bucketUser { get; set; }
         //public string temporaryFilesPath { get; set; }
@@ -22,13 +22,13 @@ namespace Schedule.Infrastructure.Data
             builder.RegisterAssemblyTypes(typeof(InfrastructureException).Assembly)
                 .Where(type => type.Namespace.Contains("Repositories"))
                 .WithParameter("connectionString", ConnectionString)
-                //.WithParameter("baseEndpoint", endPoint)
-                //.WithParameter("accessKeyId", accessKeyId)
-                //.WithParameter("secretKey", secretKey)
-               // .WithParameter("bucket", bucket)
+                .WithParameter("booksCollectionName", BooksCollectionName)
+                .WithParameter("connectionStringMongo", ConnectionStringMongo)
+                .WithParameter("databaseName", DatabaseName)
+                // .WithParameter("bucket", bucket)
                 //.WithParameter("bucketProduct", bucketProduct)
                 //.WithParameter("bucketUser", bucketUser)
-               // .WithParameter("temporaryFilesPath", temporaryFilesPath)
+                // .WithParameter("temporaryFilesPath", temporaryFilesPath)
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
             //base.Load(builder);

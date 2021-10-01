@@ -10,7 +10,7 @@ namespace Schedule.Application.Dto
         public string Name { get; set; }
         public string Telephone { get; set; }
         public string Email { get; set; }
-        public string Birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
         public ScheduleDto() { }
 

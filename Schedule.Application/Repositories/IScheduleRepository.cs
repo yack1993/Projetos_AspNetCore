@@ -10,6 +10,8 @@ namespace Schedule.Application.Repositories
 {
     public interface IScheduleRepository
     {
+        Task<ScheduleDto> GetDetails(int id);
+        Task<List<ScheduleDto>> Get();
         List<ScheduleDataDto> ListSchedules(int pageNumber, int rowsPerPage, string search);
         //Task<ScheduleDto> AddSchedule(ScheduleDto scheduleDto);
         Task<int> AddSchedule(ScheduleDto schedule);
