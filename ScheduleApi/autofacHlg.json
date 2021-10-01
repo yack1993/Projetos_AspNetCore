@@ -19,6 +19,11 @@
         "BooksCollectionName": "#",
         "ConnectionStringMongo": "mongodb://localhost:27017",
         "DatabaseName": "#"
+        /*"BookstoreDatabaseSettings": {
+          "BooksCollectionName": "Books",
+          "ConnectionStringMongo": "mongodb://localhost:27017",
+          "DatabaseName": "BookstoreDb"
+        }*/
       }
     }
   ]
