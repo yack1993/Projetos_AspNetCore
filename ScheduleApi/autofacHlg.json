@@ -15,15 +15,10 @@
     {
       "type": "Schedule.Infrastructure.Data.Module",
       "properties": {
-        "ConnectionString": "User ID=postgres;password=pretinho1993;Server=localhost;port=5432;Database=ScheduleApi;Integrated Security=true;Pooling=true;",
+        "ConnectionString": "User ID=postgres;password=#;Server=localhost;port=5432;Database=ScheduleApi;Integrated Security=true;Pooling=true;",
         "BooksCollectionName": "Books",
         "ConnectionStringMongo": "mongodb://localhost:27017",
         "DatabaseName": "BookstoreDb"
-        /*"BookstoreDatabaseSettings": {
-          "BooksCollectionName": "Books",
-          "ConnectionStringMongo": "mongodb://localhost:27017",
-          "DatabaseName": "BookstoreDb"
-        }*/
       }
     }
   ]
